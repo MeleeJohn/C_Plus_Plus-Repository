@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "739045dc-495d-4656-aae0-2fb44ba0b439": {
+      "ProjectGuid": "739045dc-495d-4656-aae0-2fb44ba0b439",
+      "DisplayName": "DnD-Class_Sheet-Creator",
+      "ColorIndex": 0
+    },
+    "a8c9bd6e-9640-45b1-a26d-17b1ce5251d9": {
+      "ProjectGuid": "a8c9bd6e-9640-45b1-a26d-17b1ce5251d9",
+      "DisplayName": "ConsoleApplication1",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
