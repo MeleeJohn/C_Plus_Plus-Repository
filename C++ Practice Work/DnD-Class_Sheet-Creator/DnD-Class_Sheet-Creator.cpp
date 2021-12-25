@@ -4,6 +4,7 @@
 #include <iostream>
 #include <Random>
 #include "Character.h"
+#include "GreatSword.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ string playerRace;
 string playerClass;
 string playerAlignment;
 vector <Character> party;
-
+GreatSword GS;
 void setUpPlayer();
 
 //make a player character object with getters and setters to set up a party of classes at lvl 1 with stats
@@ -25,8 +26,19 @@ int main()
 {
     srand(time(0));
 
+    /* Weapon info acan be set from a referenced variant of the 
+    great sword class and properly inherits the weapon parent class 
+    Figure out how to se everything in the GreatSword.h class*/
+    //---------------------------
+    GS.setWeaponName("The Slab");
+    GS.setDamageType("Slashing/Bludgeoning");
+    GS.setWeaponDice(4, 6, 4);
+    GS.getWeaponInfo();
+    //---------------------------
+    
+    
     if (party.size() == 0) {
-        cout << "Woah bro where you going, let's get you set up first and make a character!" << endl;
+        cout << "Woah player where you going, let's get you set up first and make a character!" << endl;
         setUpPlayer();
     }
     else {
@@ -59,7 +71,6 @@ int main()
             cout << "How many die to roll?" << endl;
             cin >> userChoiceThree;
             party[0].makeRoll(userChoiceOne, userChoiceTwo, userChoiceThree);
-            
             break;
 
         case 4:
