@@ -7,11 +7,16 @@
 
 using namespace std;
 
+//User choice variables can be constantly wiped and re used by different choices
+int userChoiceOne;
+int userChoiceTwo;
+int userChoiceThree;
 
 string playerName;
 string playerRace;
 string playerClass;
 string playerAlignment;
+vector <Character> party;
 
 void setUpPlayer();
 
@@ -19,9 +24,51 @@ void setUpPlayer();
 int main()
 {
     srand(time(0));
-    setUpPlayer();
-    
 
+    if (party.size() == 0) {
+        cout << "Woah bro where you going, let's get you set up first and make a character!" << endl;
+        setUpPlayer();
+    }
+    else {
+        cout << "What would you like to do?" << endl;
+        cout << "1. Check party members" << endl;
+        cout << "2. Create new party member" << endl;
+        cout << "3. Make roll" << endl;
+        cout << "4. End" << endl;
+
+        cin >> userChoiceOne;
+
+        switch (userChoiceOne)
+        {
+        default:
+            break;
+
+        case 1:
+
+            break;
+
+        case 2:
+            setUpPlayer();
+            break;
+
+        case 3:
+            cout << "Please enter die type (Ex. d20 -> 20, d100 -> 100, d8 -> 8)." << endl;
+            cin >> userChoiceOne;
+            cout << "Please add up and enter any modifiers. " << endl;
+            cin >> userChoiceTwo;
+            cout << "How many die to roll?" << endl;
+            cin >> userChoiceThree;
+            party[0].makeRoll(userChoiceOne, userChoiceTwo, userChoiceThree);
+            
+            break;
+
+        case 4:
+
+            break;
+        }
+    }
+
+   
 }
 
 void setUpPlayer() {
@@ -38,7 +85,10 @@ void setUpPlayer() {
     cin >> playerAlignment;
     cout << endl;
     Character partyMember = Character(playerRace, playerClass, playerAlignment);
+    party.push_back(partyMember);
     partyMember.setName(playerName);
     partyMember.printCharacterSheet();
+
+    main();
 }
 

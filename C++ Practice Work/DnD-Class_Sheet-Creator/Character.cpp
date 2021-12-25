@@ -4,6 +4,7 @@
 #include <vector>
 
 Character::Character(std::string characterRacei, std::string characterClassi, std::string characterAlignmenti) {
+		
 	srand(time(0));
 	characterRace = characterRacei;
 	characterClass = characterClassi;
@@ -115,15 +116,25 @@ int Character::pickModifiers(int baseStat) {
 	return tempMod;
 }
 
-int Character::makeRoll(int dieType)
+int Character::makeRoll(int dieType, int modifier, int amountOfDie)
 {
+	int tempRoll = 0;
+	for (int i = 0; i < amountOfDie; i++) {
+		tempRoll = modifier + (rand() % dieType + 1);
+		std::cout << "You rolled a " << tempRoll << std::endl;
+	}
 	
-	return 0;
+	return tempRoll;
 }
 
 void Character::printCharacterSheet() {
 	
 	std::cout << characterName << "'s Character Sheet" << std::endl;
+	std::cout << std::endl;
+	std::cout << characterRace << std::endl;
+	std::cout << characterClass << std::endl;
+	std::cout << characterAlignment << std::endl;
+	std::cout << std::endl;
 
 	std::cout << "               Stat  " << "  Mod  "  << std::endl;
 	for (int i = 0; i < statsArray.size(); i++) {
@@ -159,4 +170,5 @@ void Character::printCharacterSheet() {
 		
 	}
 
+	std::cout << std::endl;
 }

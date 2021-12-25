@@ -14,16 +14,16 @@ class Character {
 
 		int Strength = 0;
 		int StrengthMod = 0;
-		int Dexterity = 1;
-		int DexterityMod = 1;
-		int Constitution = 2;
-		int ConstitutionMod = 2;
-		int Intelligence = 3;
-		int IntelligenceMod = 3;
-		int Wisdom = 4;
-		int WisdomMod = 4;
-		int Charisma = 5;
-		int CharismaMod = 5;
+		int Dexterity = 0;
+		int DexterityMod = 0;
+		int Constitution = 0;
+		int ConstitutionMod = 0;
+		int Intelligence = 0;
+		int IntelligenceMod = 0;
+		int Wisdom = 0;
+		int WisdomMod = 0;
+		int Charisma = 0;
+		int CharismaMod = 0;
 		std::vector<int> statsArray;
 		std::vector<int> modsArray;
 
@@ -39,7 +39,7 @@ class Character {
 
 	public:
 		Character(std::string, std::string, std::string);
-		int makeRoll(int);
+		int makeRoll(int, int, int);
 		void printCharacterSheet();
 		void setName(std::string);
 
