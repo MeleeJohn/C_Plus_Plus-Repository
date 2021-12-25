@@ -3,4 +3,4 @@
 
 List of practice projects
 - DnD Dice roller
-- Dnd character sheet and party manager
+- DnD character sheet and party manager
