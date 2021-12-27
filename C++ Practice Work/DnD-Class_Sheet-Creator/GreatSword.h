@@ -1,7 +1,10 @@
 #pragma once
-#include "WeaponParent.h"
-class GreatSword : public WeaponParent  {
+#include "Weapon.h"
+#include <string>
+class GreatSword : public Weapon  {
 
-	
+	private:
 
+	public:
+		void InitializeGreatSword();
 };

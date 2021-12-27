@@ -172,3 +172,17 @@ void Character::printCharacterSheet() {
 
 	std::cout << std::endl;
 }
+
+void Character::getEquipment() {
+	for (int i = 0; i < characterWeapons.size(); i++) {
+		//std::cout << characterWeapons[i].EquipmentName << std::endl;
+		if (characterWeapons[i].EquipmentType == "Weapon") {
+			characterWeapons[i].getWeaponInfo();
+		}
+	}
+}
+
+void Character::AddEquipment(Weapon weaponPiece)
+{
+	characterWeapons.push_back(weaponPiece);
+}

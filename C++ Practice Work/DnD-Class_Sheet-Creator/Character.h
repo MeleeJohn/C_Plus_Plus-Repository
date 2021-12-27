@@ -2,6 +2,8 @@
 
 #include <random>
 #include <string>
+#include "Equipment.h"
+#include "Weapon.h"
 //Basic Stats
 
 
@@ -31,6 +33,8 @@ class Character {
 		int HitDie = 0;
 		int ArmorClass = 0;
 		std::string ArmorType;
+		std::vector<Weapon> characterWeapons;
+
 
 		int SetHealth();
 		void PickEquipment();
@@ -42,5 +46,7 @@ class Character {
 		int makeRoll(int, int, int);
 		void printCharacterSheet();
 		void setName(std::string);
-
+		void getEquipment();
+		void AddEquipment(Weapon);
+		
 };
