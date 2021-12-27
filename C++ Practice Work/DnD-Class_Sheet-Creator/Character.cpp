@@ -131,9 +131,9 @@ void Character::printCharacterSheet() {
 	
 	std::cout << characterName << "'s Character Sheet" << std::endl;
 	std::cout << std::endl;
-	std::cout << characterRace << std::endl;
-	std::cout << characterClass << std::endl;
-	std::cout << characterAlignment << std::endl;
+	std::cout << "Race     : " << characterRace << std::endl;
+	std::cout << "Class    : " << characterClass << std::endl;
+	std::cout << "Alignment: " << characterAlignment << std::endl;
 	std::cout << std::endl;
 
 	std::cout << "               Stat  " << "  Mod  "  << std::endl;
@@ -170,19 +170,23 @@ void Character::printCharacterSheet() {
 		
 	}
 
+	characterWeapons[0].getWeaponInfo();
+
 	std::cout << std::endl;
 }
 
 void Character::getEquipment() {
 	for (int i = 0; i < characterWeapons.size(); i++) {
-		//std::cout << characterWeapons[i].EquipmentName << std::endl;
 		if (characterWeapons[i].EquipmentType == "Weapon") {
 			characterWeapons[i].getWeaponInfo();
 		}
 	}
+	//std::cout << characterWeapons.size() << std::endl;
 }
 
 void Character::AddEquipment(Weapon weaponPiece)
 {
+
 	characterWeapons.push_back(weaponPiece);
+	
 }

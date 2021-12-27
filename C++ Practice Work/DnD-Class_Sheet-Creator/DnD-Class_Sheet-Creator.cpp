@@ -37,7 +37,7 @@ int main()
     else {
         cout << "What would you like to do?" << endl;
         cout << "1. Check equipment" << endl;
-        cout << "2. Create new party member" << endl;
+        cout << "2. Create new party member (Legacy)" << endl;
         cout << "3. Make roll" << endl;
         cout << "4. End" << endl;
 
@@ -54,7 +54,9 @@ int main()
             break;
 
         case 2:
-            setUpPlayer();
+            //setUpPlayer();
+            pickAWeapon();
+            main();
             break;
 
         case 3:
@@ -62,7 +64,7 @@ int main()
             break;
 
         case 4:
-
+            cout << "Thank you for using me" << endl;
             break;
         }
     }
@@ -85,11 +87,10 @@ void setUpPlayer() {
     cout << endl;
     Character partyMember = Character(playerRace, playerClass, playerAlignment);
     party.push_back(partyMember);
-    pickAWeapon();
     partyMember.setName(playerName);
-    partyMember.printCharacterSheet();
-    partyMember.getEquipment();
-    //GS.getWeaponInfo();
+    pickAWeapon();
+    party[0].printCharacterSheet();
+
     main();
 }
 
