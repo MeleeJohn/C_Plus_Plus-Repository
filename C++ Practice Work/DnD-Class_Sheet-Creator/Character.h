@@ -44,7 +44,7 @@ class Character {
 	public:
 		Character(std::string, std::string, std::string);
 		int makeRoll(int, int, int);
-		void printCharacterSheet();
+		void printCharacterSheet(std::string);
 		void setName(std::string);
 		void getEquipment();
 		void AddEquipment(Weapon);

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <Random>
+#include <fstream>
 #include "Character.h"
 #include "GreatSword.h"
 
@@ -19,6 +20,8 @@ string playerClass;
 string playerAlignment;
 vector <Character> party;
 GreatSword GS;
+string playerSheetFileName;
+ofstream playerSheet;
 
 //Equipment PrimaryWeapon;
 void setUpPlayer();
@@ -28,48 +31,47 @@ void makeARoll();
 int main()
 {
     srand(time(0));
-
-     
-    if (party.size() == 0) {
-        cout << "Woah player where you going, let's get you set up first and make a character!" << endl;
-        setUpPlayer();
-    }
-    else {
-        cout << "What would you like to do?" << endl;
-        cout << "1. Check equipment" << endl;
-        cout << "2. Create new party member (Legacy)" << endl;
-        cout << "3. Make roll" << endl;
-        cout << "4. End" << endl;
-
-        cin >> userChoiceOne;
-
-        switch (userChoiceOne)
-        {
-        default:
-            break;
-
-        case 1:
-            party[0].getEquipment();
-            main();
-            break;
-
-        case 2:
-            //setUpPlayer();
-            pickAWeapon();
-            main();
-            break;
-
-        case 3:
-            makeARoll();
-            break;
-
-        case 4:
-            cout << "Thank you for using me" << endl;
-            break;
+    /*cout << "Please neter the name of the .txt file we are to write this information to: ";
+    cin >> playerSheetFileName;
+    playerSheet.open(playerSheetFileName.append(".txt"));*/
+        if (party.size() == 0) {
+            cout << "Lets get you setting up a character!" << endl;
+            setUpPlayer();
         }
-    }
+        else {
+            cout << "What would you like to do?" << endl;
+            cout << "1. Check equipment" << endl;
+            cout << "2. Create new party member (Legacy)" << endl;
+            cout << "3. Make roll" << endl;
+            cout << "4. End" << endl;
 
-   
+            cin >> userChoiceOne;
+
+            switch (userChoiceOne)
+            {
+            default:
+                break;
+
+            case 1:
+                party[0].getEquipment();
+                main();
+                break;
+
+            case 2:
+                //setUpPlayer();
+                pickAWeapon();
+                main();
+                break;
+
+            case 3:
+                makeARoll();
+                break;
+
+            case 4:
+                cout << "Thank you for using me" << endl;
+                break;
+            }
+        }
 }
 
 void setUpPlayer() {
@@ -86,10 +88,10 @@ void setUpPlayer() {
     cin >> playerAlignment;
     cout << endl;
     Character partyMember = Character(playerRace, playerClass, playerAlignment);
-    party.push_back(partyMember);
     partyMember.setName(playerName);
+    party.push_back(partyMember);
     pickAWeapon();
-    party[0].printCharacterSheet();
+    party[0].printCharacterSheet(playerSheetFileName);
 
     main();
 }

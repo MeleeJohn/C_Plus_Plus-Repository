@@ -2,6 +2,7 @@
 #include <random>
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 Character::Character(std::string characterRacei, std::string characterClassi, std::string characterAlignmenti) {
 		
@@ -127,14 +128,30 @@ int Character::makeRoll(int dieType, int modifier, int amountOfDie)
 	return tempRoll;
 }
 
-void Character::printCharacterSheet() {
+void Character::printCharacterSheet(std::string outFileName) {
+	std::ofstream outFile;
 	
+	if (outFile.is_open()) {
+
+	} else {
+		outFile.open(characterName.append(".txt"));
+	}
 	std::cout << characterName << "'s Character Sheet" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Race     : " << characterRace << std::endl;
 	std::cout << "Class    : " << characterClass << std::endl;
 	std::cout << "Alignment: " << characterAlignment << std::endl;
 	std::cout << std::endl;
+
+	//VERSION FOR FILE WRITTING--------------------------------------------
+	outFile << characterName << "'s Character Sheet" << std::endl;
+	outFile << std::endl;
+	outFile << "Race     : " << characterRace << std::endl;
+	outFile << "Class    : " << characterClass << std::endl;
+	outFile << "Alignment: " << characterAlignment << std::endl;
+	outFile << std::endl;
+	//----------------------------------------------------------------------
+
 
 	std::cout << "               Stat  " << "  Mod  "  << std::endl;
 	for (int i = 0; i < statsArray.size(); i++) {
