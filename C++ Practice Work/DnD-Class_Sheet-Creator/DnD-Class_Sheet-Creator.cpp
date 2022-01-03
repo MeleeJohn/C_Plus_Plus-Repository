@@ -6,6 +6,7 @@
 #include <fstream>
 #include "Character.h"
 #include "GreatSword.h"
+#include "ShortSword.h"
 
 using namespace std;
 
@@ -19,9 +20,14 @@ string playerRace;
 string playerClass;
 string playerAlignment;
 vector <Character> party;
-GreatSword GS;
+
 string playerSheetFileName;
 ofstream playerSheet;
+
+// Starter weapons
+GreatSword GS;
+ShortSword SS;
+
 
 //Equipment PrimaryWeapon;
 void setUpPlayer();
@@ -35,14 +41,14 @@ int main()
     cin >> playerSheetFileName;
     playerSheet.open(playerSheetFileName.append(".txt"));*/
         if (party.size() == 0) {
-            cout << "Lets get you setting up a character!" << endl;
+            cout << "Lets get you set up a character!" << endl;
             setUpPlayer();
         }
         else {
             cout << "What would you like to do?" << endl;
-            cout << "1. Check equipment" << endl;
+            cout << "1. Make new Character" << endl;
             cout << "2. Create new party member (Legacy)" << endl;
-            cout << "3. Make roll" << endl;
+            //cout << "3. Make roll" << endl;
             cout << "4. End" << endl;
 
             cin >> userChoiceOne;
@@ -53,7 +59,8 @@ int main()
                 break;
 
             case 1:
-                party[0].getEquipment();
+                //party[0].getEquipment();
+                setUpPlayer();
                 main();
                 break;
 
@@ -99,6 +106,7 @@ void setUpPlayer() {
 void pickAWeapon() {
     cout << "Choose a weapon: " << endl;
     cout << "1. The Slab (Great Sword)" << endl;
+    cout << "2. Demascus (Short Sword)" << endl;
     cout << endl;
     cin >> userChoiceOne;
 
@@ -110,6 +118,11 @@ void pickAWeapon() {
     case 1:
         GS.InitializeGreatSword();
         party[0].AddEquipment(GS);
+        break;
+
+    case 2:
+        SS.InitializeShortSword();
+        party[0].AddEquipment(SS);
         break;
     }
 }

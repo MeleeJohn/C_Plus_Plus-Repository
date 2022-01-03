@@ -13,6 +13,9 @@ class Character {
 		std::string characterRace;
 		std::string characterClass;
 		std::string characterAlignment;
+		std::string characterHairColor;
+		std::string characterHeight;
+		int characterHeightHolder;
 
 		int Strength = 0;
 		int StrengthMod = 0;
@@ -40,6 +43,7 @@ class Character {
 		void PickEquipment();
 		int pickStats();
 		int pickModifiers(int);
+		
 
 	public:
 		Character(std::string, std::string, std::string);
@@ -48,5 +52,6 @@ class Character {
 		void setName(std::string);
 		void getEquipment();
 		void AddEquipment(Weapon);
+		void pickRandomHeight();
 		
 };

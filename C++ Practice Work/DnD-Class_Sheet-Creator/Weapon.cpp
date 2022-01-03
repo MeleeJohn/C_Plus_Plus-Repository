@@ -1,5 +1,6 @@
 #include "Weapon.h"
 #include <iostream>
+#include <fstream>
 
 /*void Weapon::setWeaponName(std::string namei)
 {
@@ -23,10 +24,22 @@ int Weapon::MakeDamageRoll()
     return 0;
 }
 
-void Weapon::getWeaponInfo()
+void Weapon::getWeaponInfo(std::ofstream& CurrentFile)
 {
+    //std::ofstream outFile;
+    //outFile.open(fileName.append(".txt"));
+
+    if (CurrentFile.is_open()) {
+        CurrentFile << std::endl;
+        getBasicEquipmentInfo(CurrentFile);
+        CurrentFile << damageType << std::endl;
+        CurrentFile << "Damage roll: " << damageDiceAmount << "d" << damageDiceType << "+" << damageModifiers << std::endl;
+    }
+    else {
+        
+    }
     //Print out all wepaon stats fro player consumption
-    getBasicEquipmentInfo();
+    
     std::cout << damageType << std::endl;
     std::cout << "Damage roll: " << damageDiceAmount << "d" << damageDiceType << "+" << damageModifiers << std::endl;
 

@@ -1,0 +1,19 @@
+Ivan.txt's Character Sheet
+
+Ivan.txt
+4'7"
+Race     : Elf
+Class    : Ranger
+Alignment: lawful
+
+               Stat    Mod  
+Strength        3      -4
+Dexterity       8      -1
+Constitution    2      -4
+Intelligence    11      0
+Wisdom          5      -3
+Charism         3      -4
+
+Demascus
+Slashing and Stabbing
+Damage roll: 2d4+1

@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 
+
 Character::Character(std::string characterRacei, std::string characterClassi, std::string characterAlignmenti) {
 		
 	srand(time(0));
@@ -11,6 +12,7 @@ Character::Character(std::string characterRacei, std::string characterClassi, st
 	characterClass = characterClassi;
 	characterAlignment = characterAlignmenti;
 	pickStats();
+	pickRandomHeight();
 }
 
 void Character::setName(std::string namei) {
@@ -25,6 +27,22 @@ int Character::SetHealth()
 void Character::PickEquipment()
 {
 
+}
+
+void Character::pickRandomHeight() {
+	std::string tempHeightString;
+
+	characterHeightHolder = 4 + (rand() % static_cast<int>(7-4+1));
+	//std::cout << "Feet test: " << characterHeightHolder << std::endl;
+	tempHeightString.append(std::to_string(characterHeightHolder) + "'");
+
+	characterHeightHolder = 1 + (rand() % static_cast<int>(11-1+1));
+	//std::cout << "Inches test: " << characterHeightHolder << std::endl;
+	tempHeightString.append(std::to_string(characterHeightHolder) + '"');
+
+	//std::cout << "Height test before printing anything out: " << tempHeightString << std::endl;
+	characterHeight = tempHeightString;
+	std::cout << "Character height is " << characterHeight << std::endl;
 }
 
 int Character::pickStats()
@@ -130,7 +148,7 @@ int Character::makeRoll(int dieType, int modifier, int amountOfDie)
 
 void Character::printCharacterSheet(std::string outFileName) {
 	std::ofstream outFile;
-	
+
 	if (outFile.is_open()) {
 
 	} else {
@@ -138,6 +156,8 @@ void Character::printCharacterSheet(std::string outFileName) {
 	}
 	std::cout << characterName << "'s Character Sheet" << std::endl;
 	std::cout << std::endl;
+	std::cout << characterName << std::endl;
+	std::cout << "Height   : " << characterHeight << std::endl;
 	std::cout << "Race     : " << characterRace << std::endl;
 	std::cout << "Class    : " << characterClass << std::endl;
 	std::cout << "Alignment: " << characterAlignment << std::endl;
@@ -146,6 +166,8 @@ void Character::printCharacterSheet(std::string outFileName) {
 	//VERSION FOR FILE WRITTING--------------------------------------------
 	outFile << characterName << "'s Character Sheet" << std::endl;
 	outFile << std::endl;
+	outFile << characterName << std::endl;
+	outFile << "Height   : " << characterHeight << std::endl;
 	outFile << "Race     : " << characterRace << std::endl;
 	outFile << "Class    : " << characterClass << std::endl;
 	outFile << "Alignment: " << characterAlignment << std::endl;
@@ -154,6 +176,7 @@ void Character::printCharacterSheet(std::string outFileName) {
 
 
 	std::cout << "               Stat  " << "  Mod  "  << std::endl;
+	outFile << "               Stat  " << "  Mod  "  << std::endl;
 	for (int i = 0; i < statsArray.size(); i++) {
 		switch (i)
 		{
@@ -162,40 +185,47 @@ void Character::printCharacterSheet(std::string outFileName) {
 
 		case 0:
 			std::cout << "Strength        " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Strength        " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 
 		case 1:
 			std::cout << "Dexterity       " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Dexterity       " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 
 		case 2:
 			std::cout << "Constitution    " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Constitution    " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 
 		case 3:
 			std::cout << "Intelligence    " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Intelligence    " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 
 		case 4:
 			std::cout << "Wisdom          " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Wisdom          " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 
 		case 5:
 			std::cout << "Charism         " << statsArray[i] << "      " << modsArray[i] << std::endl;
+			outFile << "Charism         " << statsArray[i] << "      " << modsArray[i] << std::endl;
 			break;
 		}
 		
 	}
 
-	characterWeapons[0].getWeaponInfo();
-
+	characterWeapons[0].getWeaponInfo(outFile);
+	outFile.close();
 	std::cout << std::endl;
 }
 
 void Character::getEquipment() {
 	for (int i = 0; i < characterWeapons.size(); i++) {
 		if (characterWeapons[i].EquipmentType == "Weapon") {
-			characterWeapons[i].getWeaponInfo();
+			//characterWeapons[i].getWeaponInfo(NULL);
+			//characterWeapons[i].getBasicEquipmentInfo();
 		}
 	}
 	//std::cout << characterWeapons.size() << std::endl;

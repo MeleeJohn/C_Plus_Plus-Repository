@@ -1,6 +1,0 @@
-John.txt's Character Sheet
-
-Race     : HUman
-Class    : monk
-Alignment: good
-

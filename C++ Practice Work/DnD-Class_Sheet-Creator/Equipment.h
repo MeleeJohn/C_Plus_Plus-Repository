@@ -8,6 +8,6 @@ class Equipment
 	public:
 		std::string EquipmentName;
 		std::string EquipmentType;
-		void getBasicEquipmentInfo();
+		void getBasicEquipmentInfo(std::ofstream&);
 };
 

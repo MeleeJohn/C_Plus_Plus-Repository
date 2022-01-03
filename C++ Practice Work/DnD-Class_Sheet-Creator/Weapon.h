@@ -16,7 +16,7 @@ public:
 	
 	
 	int MakeDamageRoll();
-	void getWeaponInfo();
+	void getWeaponInfo(std::ofstream&);
 	//void setWeaponName(std::string);
 	void setDamageType(std::string);
 	void setWeaponDice(int, int, int);
